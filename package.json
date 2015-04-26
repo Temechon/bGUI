@@ -1,0 +1,10 @@
+{
+    "name": "bGUI",
+    "version": "1.0.0",
+    "dependencies": {
+        "uglifyjs": "~2.3.6"
+    },
+    "scripts": {
+        "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI.min.js"
+    }
+}
