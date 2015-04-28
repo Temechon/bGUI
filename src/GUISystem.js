@@ -43,7 +43,7 @@ var bGUI = bGUI || {};
         this._camera            =  new BABYLON.FreeCamera("GUICAMERA", new BABYLON.Vector3(0,0,-30), this._scene);
         this._camera.mode       = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
         this._camera.setTarget(BABYLON.Vector3.Zero());
-        this._camera.layerMask  = GUISystem.LAYER_MASK;
+        this._camera.layerMask  = bGUI.GUISystem.LAYER_MASK;
 
         var width   = this.dpr * this._scene.getEngine().getRenderingCanvas().width;
         var height  = this.dpr * this._scene.getEngine().getRenderingCanvas().height;
@@ -70,7 +70,7 @@ var bGUI = bGUI || {};
         this._camera.dispose();
     };
     GUISystem.prototype.add = function(mesh) {
-        var p = new GUIObject(mesh, this);
+        var p = new bGUI.GUIObject(mesh, this);
         this.objects.push(p);
         return p;
     };

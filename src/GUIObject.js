@@ -25,7 +25,7 @@ var bGUI = bGUI || {};
         );
         this.mesh.actionManager.registerAction(updateOnPointerUp);
 
-        this.mesh.layerMask     = GUISystem.LAYER_MASK;
+        this.mesh.layerMask     = bGUI.GUISystem.LAYER_MASK;
 
         this.guiSystem.objects.push(this);
 

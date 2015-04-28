@@ -54,7 +54,7 @@ var bGUI = bGUI || {};
         this.mesh.actionManager.registerAction(updateOnPointerUp);
     };
     GUIPanel.prototype = Object.create(bGUI.GUIObject.prototype);
-    GUIPanel.prototype.constructor = GUIPanel;
+    GUIPanel.prototype.constructor = bGUI.GUIPanel;
     bGUI.GUIPanel = GUIPanel;
 
 })();
