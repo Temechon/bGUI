@@ -1,5 +1,4 @@
 # bGUI v1.0
-----------------------
 
 **A Babylon.js extension to create a GUI**
 
@@ -10,7 +9,7 @@ bGUI is an extension for the 3D engine [Babylon.js](www.babylonjs.com) providing
 ![](http://i.imgur.com/VO6gM1N.png)
 
 
-# Why ? You can use HTML/CSS to do that !
+# Why ? I can use HTML/CSS to do that !
 The only solution (for now) to deploy a babylon.js game on mobile platforms (Android/iOS - Windows Phone supports Webgl application natively) 
 is to use [Cocoon.js](https://www.ludei.com/cocoonjs/) provided by Ludei, with the technology Canvas+ (Webview+ is not so great in term of performance).
 However, Canvas+ does not support DOM elements, such as div, img, ... The only solution is to create the GUI directly in the HTML canvas.
@@ -55,19 +54,19 @@ bGUI provides a set of methods to update the position of the panel, 3 actually :
 * **relativePosition(BABYLON.Vector3)** : to update the mesh relatively to the origin of the GUI system (takes a position in percentages)
 * **position(BABYLON.Vector3)** :to update the mesh in the BABYLON world (takes a position in babylon units)
 
-[You can read all the documentation here](http://doc.babylonjs.com/).
+~~[You can read all the documentation here](http://doc.babylonjs.com/).~~
 
 # Any dependencies ?
 bGUI depends on [babylon.js (from v2.1-beta)](www.babylonjs.com), and [hand.js](https://handjs.codeplex.com/) for touch events.
  
 # Is a demo available somewhere ?
-Yes : [http://temechon.github.io/bGUI/](http://temechon.github.io/bGUI/)
+~~Yes : [http://temechon.github.io/bGUI/](http://temechon.github.io/bGUI/)~~
 
 You can also use a direct reference to the BABYLON mesh used for any GUIObject. This way, you can use 
 Babylon animations to update your panel for example. 
 
 # Is there any documentation ?
-Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/)
+~~Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/)~~
 
 # Copyright ?
 [WTFPL](http://www.wtfpl.net/about/)
