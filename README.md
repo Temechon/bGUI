@@ -11,16 +11,16 @@ bGUI is an extension for the 3D engine [Babylon.js](www.babylonjs.com) providing
 
 # Why ? I can use HTML/CSS to do that !
 The only solution (for now) to deploy a babylon.js game on mobile platforms (Android/iOS - Windows Phone supports Webgl application natively) 
-is to use [Cocoon.js](https://www.ludei.com/cocoonjs/) provided by Ludei, with the technology Canvas+ (Webview+ is not so great in term of performance).
+is to use [Cocoon.js](https://www.ludei.com/cocoonjs/) provided by Ludei, with the technology Canvas+ (Webview+ is not so great in term of performance for 3D scenes).
 However, Canvas+ does not support DOM elements, such as div, img, ... The only solution is to create the GUI directly in the HTML canvas.
 That's what bGUI do !
 
-This library can also fit to some people that want to control the game GUI in javascript without the need of jQuery or manipulating DOM objects.
+This library can also fit to some people who want to control the game GUI in javascript without the need of jQuery or manipulating DOM objects.
  
 # How does it work ?
 bGUI adds automatically to your game an orthographic camera correctly configured (according to the canvas size and the device pixel ratio), 
-and gives you 1 main classe to create your game GUI : **GUIObject**.
-A **GUIObject** is a 3D object (sphere, plane, cube, custom object, ...) translated into the GUI world, and removed from your game world.
+and gives you several classes to create your game GUI.
+A **GUIObject** is the root class of bGUI, and represents a 3D object (sphere, plane, cube, custom object, ...) translated into the GUI world, and removed from your game world.
 
 bGUI gives you 2 specific classes in order to create HUD easily : 
 
@@ -54,16 +54,18 @@ bGUI provides a set of methods to update the position of the panel, 3 actually :
 * **relativePosition(BABYLON.Vector3)** : to update the mesh relatively to the origin of the GUI system (takes a position in percentages)
 * **position(BABYLON.Vector3)** :to update the mesh in the BABYLON world (takes a position in babylon units)
 
+You can also use a direct reference to the BABYLON mesh used for any GUIObject. This way, you can use 
+Babylon animations to update your panel for example. 
+
+
 ~~[You can read all the documentation here](http://doc.babylonjs.com/).~~
 
 # Any dependencies ?
 bGUI depends on [babylon.js (from v2.1-beta)](www.babylonjs.com), and [hand.js](https://handjs.codeplex.com/) for touch events.
  
 # Is a demo available somewhere ?
-~~Yes : [http://temechon.github.io/bGUI/](http://temechon.github.io/bGUI/)~~
-
-You can also use a direct reference to the BABYLON mesh used for any GUIObject. This way, you can use 
-Babylon animations to update your panel for example. 
+Yes : [http://temechon.github.io/bGUI/](http://temechon.github.io/bGUI/)
+Try to click on the images :)
 
 # Is there any documentation ?
 ~~Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/)~~

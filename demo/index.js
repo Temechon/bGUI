@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
             head.guiposition(new BABYLON.Vector3(100, 100, 0));
             head.onClick = function() {
                 animate(head.mesh, 30);
-            }
+            };
 
             // Title
             var title = new bGUI.GUIText("helpText", 256, 128, {font:"40px Segoe UI", text:"bGUI", color:"#cecb7a"}, gui);
