@@ -1,4 +1,4 @@
-#Roadmap v1.1
+#Roadmap for v1.1
 ----------------------
 
 * Add an option to freeze matrix world of static GUI objects
@@ -6,3 +6,4 @@
 * Don't add the active camera in scene.activeCameras if already added.
 * dispose GUI system should delete all objects and groups
 * create function guiSystem.getCamera();
+* update the text parameter on guitext
