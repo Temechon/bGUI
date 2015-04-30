@@ -58,7 +58,7 @@ You can also use a direct reference to the BABYLON mesh used for any GUIObject. 
 Babylon animations to update your panel for example. 
 
 
-~~[You can read all the documentation here](http://doc.babylonjs.com/).~~
+[You can read all the documentation here](http://doc.babylonjs.com/page.php?p=25102).
 
 # Any dependencies ?
 bGUI depends on [babylon.js (from v2.1-beta)](www.babylonjs.com), and [hand.js](https://handjs.codeplex.com/) for touch events.
@@ -68,7 +68,7 @@ Yes : [http://temechon.github.io/bGUI/](http://temechon.github.io/bGUI/)
 Try to click on the images :)
 
 # Is there any documentation ?
-~~Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/)~~
+Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/page.php?p=25102)
 
 # Copyright ?
 [WTFPL](http://www.wtfpl.net/about/)
