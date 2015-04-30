@@ -7,3 +7,4 @@
 * dispose GUI system should delete all objects and groups
 * create function guiSystem.getCamera();
 * update the text parameter on guitext
+* Enable animations for a GUIGroup
