@@ -8,3 +8,4 @@
 * create function guiSystem.getCamera();
 * update the text parameter on guitext
 * Enable animations for a GUIGroup
+* Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
