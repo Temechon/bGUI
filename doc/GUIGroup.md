@@ -23,3 +23,6 @@ Add a GUIObject to this group
 
 ###setVisible(boolean) → void
 Set all elements of this group as visible (or not)
+
+###isVisible(boolean) → void
+Get all elements of this group as visible (or not)
