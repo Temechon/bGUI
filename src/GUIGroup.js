@@ -22,6 +22,9 @@ var bGUI = bGUI || {};
             e.setVisible(bool);
         });
     };
+	GUIGroup.prototype.isVisible = function() {
+        return this.elements[0].mesh.isVisible;        
+	};
     GUIGroup.prototype.add = function(guiElement) {
         this.elements.push(guiElement);
     };

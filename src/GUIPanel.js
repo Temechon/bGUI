@@ -22,11 +22,10 @@ var bGUI = bGUI || {};
             textSize            = this.texture.getSize();
         }
         this.texture.hasAlpha   = true;
-        var mat                     = new BABYLON.StandardMaterial(name+"_material", guisystem.getScene());
-        mat.emissiveColor           = BABYLON.Color3.White();
-        mat.diffuseTexture          = texture;
-        this.mesh.material   = mat;
-
+        var mat                 = new BABYLON.StandardMaterial(name+"_material", guisystem.getScene());
+        mat.emissiveColor       = BABYLON.Color3.White();
+        mat.diffuseTexture      = texture;
+        this.mesh.material      = mat;
 
         this.mesh.scaling    = new BABYLON.Vector3((textSize.width-0.1) / guisystem.zoom, (textSize.height-0.1)/guisystem.zoom, 1);
 
