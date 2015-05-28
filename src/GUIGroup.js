@@ -26,6 +26,15 @@ var bGUI = bGUI || {};
         this.elements.push(guiElement);
     };
 
+    GUIGroup.prototype.dispose = function() {
+        this.elements.forEach(function(e) {
+          e.dispose();
+        });
+        this.elements = [];
+    };
+
+
+
     /**
     * Returns true if the group is visible, false otherwise
     * @returns {GUIObject.mesh.isVisible|*}
