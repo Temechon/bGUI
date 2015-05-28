@@ -33,6 +33,9 @@ var bGUI = bGUI || {};
 
         // Contains all gui groups
         this.groups         = [];
+
+        // True if the gui is visible, false otherwise
+        this.visible        = true;
     };
 
     GUISystem.prototype.getScene = function() {
@@ -67,12 +70,32 @@ var bGUI = bGUI || {};
         this.objects.forEach(function(p) {
             p.dispose();
         });
+        this.objects = [];
+        this.groups.forEach(function(g) {
+            g.dispose();
+        });
+        this.groups = [];
         this._camera.dispose();
     };
     GUISystem.prototype.add = function(mesh) {
         var p = new bGUI.GUIObject(mesh, this);
         this.objects.push(p);
         return p;
+    };
+    /**
+     * Set the whole GUI visible or not
+     * @param bool
+     */
+    GUISystem.prototype.setVisible = function(bool) {
+      this.visible = bool;
+      // Hide all objects
+      this.objects.forEach(function(p) {
+        p.setVisible(bool);
+      });
+    };
+
+    GUISystem.prototype.isVisible = function() {
+      return this.visible;
     };
     /**
      * Return a GUi object by its name. Returns the first object found in the list.
