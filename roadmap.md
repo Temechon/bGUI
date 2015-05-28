@@ -1,4 +1,4 @@
-#Roadmap for v1.1
+#Roadmap for v1.2
 ----------------------
 
 * Add an option to freeze matrix world of static GUI objects

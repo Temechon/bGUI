@@ -1,4 +1,4 @@
-# ![](https://raw.githubusercontent.com/Temechon/bGUI/master/logo_sd.png) v1.0
+# ![](https://raw.githubusercontent.com/Temechon/bGUI/master/logo_sd.png) v1.1
 
 **A Babylon.js extension to create a GUI**
 
