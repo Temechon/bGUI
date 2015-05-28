@@ -30,13 +30,13 @@ var bGUI = bGUI || {};
         this.guiSystem.objects.push(this);
 
         // The object position in the gui system
-        this.guiposition(BABYLON.Vector3.Zero());
+        this.absolutePosition(BABYLON.Vector3.Zero());
     };
     /**
      * Set the absolute position of this object in the gui world
-     * @param guiposition
+     * @param absolutePosition
      */
-    GUIObject.prototype.guiposition = function(gp) {
+    GUIObject.prototype.absolutePosition = function(gp) {
         this.guiPosition = gp;
 
         // Update the object posion
@@ -92,7 +92,7 @@ var bGUI = bGUI || {};
         this.mesh.dispose();
     };
     GUIObject.prototype.setVisible = function(bool) {
-        this.mesh.isVisible = bool;
+        this.mesh.setVisible(bool);
     };
     bGUI.GUIObject = GUIObject;
 })();

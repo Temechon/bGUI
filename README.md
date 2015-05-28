@@ -50,7 +50,7 @@ A GUIPanel takes 4 parameters :
 
 bGUI provides a set of methods to update the position of the panel, 3 actually : 
 
-* **guiposition(BABYLON.Vector3)** : to update the mesh in the GUI world (takes a position in pixels)
+* **absolutePosition(BABYLON.Vector3)** : to update the mesh in the GUI world (takes a position in pixels)
 * **relativePosition(BABYLON.Vector3)** : to update the mesh relatively to the origin of the GUI system (takes a position in percentages)
 * **position(BABYLON.Vector3)** :to update the mesh in the BABYLON world (takes a position in babylon units)
 

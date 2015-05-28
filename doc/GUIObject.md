@@ -28,7 +28,7 @@ This function is not set when a new GUIObject is created.
 
 
 ##Methods
-###guiposition([BABYLON.Vector3](http://doc.babylonjs.com/page.php?p=24977)) → void
+###absolutePosition([BABYLON.Vector3](http://doc.babylonjs.com/page.php?p=24977)) → void
 Set the gui position of this object (values in pixels)
 
 ###relativePosition([BABYLON.Vector3](http://doc.babylonjs.com/page.php?p=24977)) → [BABYLON.Vector3](http://doc.babylonjs.com/page.php?p=24977)
