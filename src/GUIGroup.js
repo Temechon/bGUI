@@ -26,6 +26,14 @@ var bGUI = bGUI || {};
         this.elements.push(guiElement);
     };
 
+    /**
+    * Returns true if the group is visible, false otherwise
+    * @returns {GUIObject.mesh.isVisible|*}
+    */
+    GUIGroup.prototype.isVisible = function() {
+      return (this.elements.length != 0)? this.elements[0].mesh.isVisible : false;
+    };
+
     bGUI.GUIGroup = GUIGroup;
 
 })();

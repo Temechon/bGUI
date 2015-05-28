@@ -41,17 +41,25 @@ window.addEventListener("DOMContentLoaded", function() {
             head.guiposition(new BABYLON.Vector3(100, 100, 0));
             head.onClick = function() {
                 animate(head.mesh, 30);
+                var textGroup = gui.getGroupByName("text");
+                textGroup.setVisible(!textGroup.isVisible());
             };
 
+            var textGroup = new bGUI.GUIGroup("text", gui);
             // Title
             var title = new bGUI.GUIText("helpText", 256, 128, {font:"40px Segoe UI", text:"bGUI", color:"#cecb7a"}, gui);
             title.guiposition(new BABYLON.Vector3(170, 50, 0));
+            textGroup.add(title);
+
             // Baseline
             var baseline = new bGUI.GUIText("helpText", 1024, 128, {font:"30px Segoe UI", text:"a Babylon.js extension", color:"#ffffff"}, gui);
             baseline.guiposition(new BABYLON.Vector3(170, 90, 0));
+            textGroup.add(baseline);
+
             // author
             var author = new bGUI.GUIText("helpText", 512, 128, {font:"20px Segoe UI", text:"by Temechon", color:"#72bce3"}, gui);
             author.guiposition(new BABYLON.Vector3(170, 130, 0));
+            textGroup.add(author);
 
             // big vault boy
             var boy = new bGUI.GUIPanel("boy", assets["bigboy"], assets["bigboyred"], gui);
