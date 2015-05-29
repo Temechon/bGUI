@@ -10,3 +10,5 @@
 * Enable animations for a GUIGroup
 * Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
 * ~~Update the game.layerMask to make GUI object invisible to game camera~~ : Done
+* Compute guiPosition when a relativePosition is set.
+* Set name for guiPosition and guiposition
