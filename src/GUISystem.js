@@ -15,6 +15,9 @@ var bGUI = bGUI || {};
 
         // Push the activecamera in activeCameras
         var mainCam = scene.activeCamera;
+
+        // Remove the layer mask of the camera
+        mainCam.layerMask -= bGUI.GUISystem.LAYER_MASK;
         this._scene.activeCameras.push(mainCam);
 
         // The device pixel ratio of the windo
@@ -40,7 +43,7 @@ var bGUI = bGUI || {};
 
     GUISystem.prototype.getScene = function() {
         return this._scene;
-    }
+    };
 
     GUISystem.prototype._initCamera = function() {
         this._camera            =  new BABYLON.FreeCamera("GUICAMERA", new BABYLON.Vector3(0,0,-30), this._scene);
@@ -76,6 +79,8 @@ var bGUI = bGUI || {};
         });
         this.groups = [];
         this._camera.dispose();
+
+        this.getScene().activeCamera.layerMask += bGUI.GUISystem.LAYER_MASK;
     };
     GUISystem.prototype.add = function(mesh) {
         var p = new bGUI.GUIObject(mesh, this);

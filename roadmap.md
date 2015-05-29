@@ -9,3 +9,4 @@
 * update the text parameter on guitext
 * Enable animations for a GUIGroup
 * Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
+* ~~Update the game.layerMask to make GUI object invisible to game camera~~ : Done

@@ -5,6 +5,8 @@ Creates a new GUISystem and a new orthographic camera, which size is computed ac
 
 The new orthographic camera is the camera used to display all GUI elements. In order to set the GUI elements invisible to the game camera, the babylon layer mask system
 is used. All GUI elements have their layerMask set to bGUI.GUISystem.LAYER_MASK.
+Be careful ! In order to make the GUI system invisible to your game camera, **bGUI updates the layermask of your active camera**.
+This layer mask is restored when the GUI system is disposed.
 
 The origin of the GUISystem is at the top/left of the canvas.
 
