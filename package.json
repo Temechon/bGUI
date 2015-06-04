@@ -5,6 +5,7 @@
         "uglifyjs": "latest"
     },
     "scripts": {
-        "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0-beta.min.js"
+        "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0-beta.min.js",
+        "debug": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0-beta.js -b"
     }
 }

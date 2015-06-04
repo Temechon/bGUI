@@ -18,7 +18,10 @@ var bGUI = bGUI || {};
 
         // Remove the layer mask of the camera
         mainCam.layerMask -= bGUI.GUISystem.LAYER_MASK;
-        this._scene.activeCameras.push(mainCam);
+
+        if (this._scene.activeCameras.indexOf(mainCam) == -1) {
+            this._scene.activeCameras.push(mainCam);
+        }
 
         // The device pixel ratio of the windo
         this.dpr            = window.devicePixelRatio;
@@ -45,6 +48,10 @@ var bGUI = bGUI || {};
         return this._scene;
     };
 
+    GUISystem.prototype.getCamera = function() {
+      return this._camera;
+    };
+
     GUISystem.prototype._initCamera = function() {
         this._camera            =  new BABYLON.FreeCamera("GUICAMERA", new BABYLON.Vector3(0,0,-30), this._scene);
         this._camera.mode       = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
@@ -64,11 +71,10 @@ var bGUI = bGUI || {};
         this.guiWidth       = right;
         this.guiHeight      = top;
 
+        //this._scene.activeCameras.unshift(this._camera);
         this._scene.activeCameras.push(this._camera);
-
-        // The camera to use for picks
-        this._scene.cameraToUseForPointers = this._camera;
     };
+
     GUISystem.prototype.dispose = function() {
         this.objects.forEach(function(p) {
             p.dispose();

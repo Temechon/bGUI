@@ -56,5 +56,8 @@ Returns the GUIObject corresponding to the given name, or null if nothing is fou
 ###getScene() → [BABYLON.Scene](http://doc.babylonjs.com/page.php?p=24894)
 Returns the game scene
 
+###getCamera() → [BABYLON.FreeCamera](http://doc.babylonjs.com/page.php?p=24876)
+Returns the camera used by the gui system
+
 ###dispose() → void
 Dispose the GUI, and delete each GUI object. The orthographic camera is also disposed.

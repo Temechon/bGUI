@@ -32,11 +32,11 @@ window.addEventListener("DOMContentLoaded", function() {
     loader.onFinish = function() {
 
         init3d(scene, canvas);
-        scene.activeCamera.layerMask    = 1;
         setTimeout(function() {
-
             /* GUI CREATION when all texture are loaded*/
-            var gui = new bGUI.GUISystem(scene, 1200, 780);
+            var gui = new bGUI.GUISystem(scene, engine.getRenderWidth(), engine.getRenderHeight());
+
+            scene.activeCamera.layerMask    = 1;
 
             // bGUI logo
             var logo = new bGUI.GUIPanel("bgui", assets["bgui"], null, gui);
