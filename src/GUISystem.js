@@ -100,7 +100,7 @@ var bGUI = bGUI || {};
     GUISystem.prototype.setVisible = function(bool) {
       this.visible = bool;
       // Hide all objects
-      this.objects.forEach(function(p) {
+      this.objects.forEach(f  unction(p) {
         p.setVisible(bool);
       });
     };
@@ -134,6 +134,29 @@ var bGUI = bGUI || {};
         }
         return null;
     };
+
+    GUISystem.prototype.enableClick = function() {
+
+      var eventPrefix = BABYLON.Tools.GetPointerPrefix();
+      var _this = this;
+      this._scene.getRenderingCanvas().addEventListener(eventPrefix + "down", function(evt) {
+
+          var predicate = function (mesh) {
+              return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+          };
+
+          _this._scene._updatePointerPosition(evt);
+          var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
+          if (pickResult.hit) {
+              if (pickResult.pickedMesh.actionManager) {
+                  pickResult.pickedMesh.actionManager.processTrigger(BABYLON.ActionManager.OnPickTrigger, BABYLON.ActionEvent.CreateNew(pickResult.pickedMesh, evt));
+                  console.log(pickResult.pickedMesh.name);
+              }
+          }
+
+      }, false);
+    };
+
     GUISystem.LAYER_MASK = 8;
     bGUI.GUISystem = GUISystem;
 })();
