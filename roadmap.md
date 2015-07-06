@@ -7,7 +7,6 @@
 * Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
 * Compute guiPosition when a relativePosition is set.
 * Set name for guiPosition and guiposition
-* Make the width and height parameters optional : use engine.getRenderWidth(), engine.getRenderHeight() instead
 
 #Roadmap for v1.2
 ----------------------
@@ -16,3 +15,4 @@
 * ~~create function guiSystem.getCamera() ~~ : Done
 * ~~update the text parameter on guitext~~ : Done
 * ~~Update the game.layerMask to make GUI object invisible to game camera~~ : Done
+* ~~Make the width and height parameters optional : use engine.getRenderWidth(), engine.getRenderHeight() instead~~ : Done

@@ -10,6 +10,12 @@ var bGUI = bGUI || {};
             this._scene.activeCameras.push(mainCam);
         }
         this.dpr = window.devicePixelRatio;
+        if (typeof guiWidth === "undefined") {
+            guiWidth = scene.getEngine().getRenderWidth();
+        }
+        if (typeof guiHeight === "undefined") {
+            guiHeight = scene.getEngine().getRenderHeight();
+        }
         this.zoom = Math.max(guiWidth, guiHeight) / Math.max(scene.getEngine().getRenderingCanvas().width, scene.getEngine().getRenderingCanvas().height);
         this._camera = null;
         this._initCamera();

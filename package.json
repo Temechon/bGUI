@@ -6,6 +6,7 @@
     },
     "scripts": {
         "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0.min.js",
-        "debug": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0.js -b"
+        "debug": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.0.js -b",
+        "all" : "npm run debug && npm run build"
     }
 }

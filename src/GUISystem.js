@@ -26,6 +26,12 @@ var bGUI = bGUI || {};
         // The device pixel ratio of the windo
         this.dpr            = window.devicePixelRatio;
         // Compute the zoom level for the camera
+        if (typeof guiWidth === 'undefined') {
+            guiWidth = scene.getEngine().getRenderWidth();
+        }
+        if (typeof guiHeight === 'undefined') {
+            guiHeight = scene.getEngine().getRenderHeight();
+        }
         this.zoom           = Math.max(guiWidth, guiHeight) / Math.max(scene.getEngine().getRenderingCanvas().width, scene.getEngine().getRenderingCanvas().height);
 
         // Init the GUI camera
