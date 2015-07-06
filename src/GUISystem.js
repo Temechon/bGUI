@@ -135,6 +135,9 @@ var bGUI = bGUI || {};
         return null;
     };
 
+    /**
+     * Enable click actions on GUIObject
+     */
     GUISystem.prototype.enableClick = function() {
 
       var eventPrefix = BABYLON.Tools.GetPointerPrefix();

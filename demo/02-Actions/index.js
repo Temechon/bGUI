@@ -15,39 +15,36 @@ window.addEventListener("DOMContentLoaded", function() {
     spinning.rotation.x += 0.01;
     spinning.rotation.z += 0.02;
   });
+  spinning.material = new BABYLON.StandardMaterial("box", scene);
   spinning.layerMask = 1;
 
+  spinning.actionManager = new BABYLON.ActionManager(scene);
+  var updateMat = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickUpTrigger,
+    function() {
+      spinning.material.diffuseColor = BABYLON.Color3.Red();
+    }
+  );
+  spinning.actionManager.registerAction(updateMat);
 
   var gui = new bGUI.GUISystem(scene, engine.getRenderWidth(), engine.getRenderHeight() );
   var text = new bGUI.GUIText("helpText", 512, 128, {font:"40px Open Sans", textAlign:"center", text:"bGUI is awesome !", color:"#FF530D"}, gui);
   text.relativePosition(new BABYLON.Vector3(0.5, 0.75, 0));
+  text.onClick = function() {
+    spinning.material.diffuseColor = BABYLON.Color3.Blue();
+  };
 
   // Tip text
   var tip = new bGUI.GUIText("tipText", 512, 128, {font:"30px Open Sans", textAlign:"center", text:"Click on the box or click on the GUI", color:"#FFFFFF"}, gui);
   tip.relativePosition(new BABYLON.Vector3(0.5, 0.1, 0));
+  tip.onClick = function(m) {
+    spinning.material.diffuseColor = BABYLON.Color3.Purple();
+  };
 
-  var count = 0;
-  var max = 120;
-  scene.registerBeforeRender(function() {
-   count ++;
-   if (count >= max) {
-      text.relativePosition(new BABYLON.Vector3(Math.random(), Math.random(), 0));
-      count = 0;
-   }
-  });
+  gui.enableClick();
 
-  // Example of pick in the scene and pick the gui text
-  scene.cameraToUseForPointers = camera;
   scene.onPointerDown = function(evt, pr) {
     if (pr.hit) {
       console.log(pr.pickedMesh.name);
-      text.update(pr.pickedMesh.name);
-    } else {
-      var pickResult = scene.pick(scene._pointerX, scene._pointerY, null, false, gui.getCamera());
-      if (pickResult.hit) {
-        console.log(pickResult.pickedMesh.name);
-        text.update(pickResult.pickedMesh.name);
-      }
     }
   };
 

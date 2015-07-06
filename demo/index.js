@@ -35,7 +35,7 @@ window.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             /* GUI CREATION when all texture are loaded*/
             var gui = new bGUI.GUISystem(scene, engine.getRenderWidth(), engine.getRenderHeight());
-
+            gui.enableClick();
             scene.activeCamera.layerMask    = 1;
 
             // bGUI logo
@@ -80,9 +80,9 @@ window.addEventListener("DOMContentLoaded", function() {
             vault.relativePosition(new BABYLON.Vector3(0.5,0.85,0));
             vault.onClick = function() {
                 animate(boy.mesh, 60);
-            }
+            };
 
-        }, 10)
+        }, 10);
         engine.runRenderLoop(function() {
             scene.render();
         });
