@@ -51,5 +51,6 @@ If the argument is present, set the scaling of the mesh. The Babylon unit system
 
 ###dispose() → void
 Dispose this GUI object
+
 ###setVisible(boolean) → void
 Set this GUI element to visible or invisible

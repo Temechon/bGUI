@@ -47,6 +47,10 @@ The layer mask used for all GUI objects
 ###add([BABYLON.Mesh](http://doc.babylonjs.com/page.php?p=24891)) → [GUIObject]()
 Add a Babylon mesh to the GUI, and returns a new GUIObject. The given mesh layerMask is updated to GUISystem.LAYER_MASK.
 
+###enableClick → void
+Enable clic actions on all GUI objects. By default, actions are launched on the scene objects (and not on GUI). 
+With this method, BABYLON.Action will be fired on GUI objects and scene objects.
+
 ###getGroupByName(string) → [GUIGroup](http://doc.babylonjs.com/page.php?p=25104)
 Returns the GUIGroup corresponding to the given name, or null if nothing is found.
 
@@ -61,3 +65,9 @@ Returns the camera used by the gui system
 
 ###dispose() → void
 Dispose the GUI, and delete each GUI object. The orthographic camera is also disposed.
+
+###setVisible(boolean) → void
+Set the whole GUI visible or not, depending on the parameter
+
+###isVisible() → boolean
+Returns true if the GUI is visible, false otherwise

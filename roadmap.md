@@ -1,15 +1,18 @@
-#Roadmap for v1.2
+#Roadmap for v1.3
 ----------------------
 
 * Add an option to freeze matrix world of static GUI objects
-* ~~Add an option to show/hide the whole GUI~~ : Done
 * Don't add the active camera in scene.activeCameras if already added.
+* Enable animations for a GUIGroup
+* Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
+* Compute guiPosition when a relativePosition is set.
+* Set name for guiPosition and guiposition
+* Make the width and height parameters optional : use engine.getRenderWidth(), engine.getRenderHeight() instead
+
+#Roadmap for v1.2
+----------------------
+* ~~Add an option to show/hide the whole GUI~~ : Done
 * ~~dispose GUI system should delete all objects and groups~~ : Done
 * ~~create function guiSystem.getCamera() ~~ : Done
 * ~~update the text parameter on guitext~~ : Done
-* Enable animations for a GUIGroup
-* Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
 * ~~Update the game.layerMask to make GUI object invisible to game camera~~ : Done
-* Compute guiPosition when a relativePosition is set.
-* Set name for guiPosition and guiposition
-* Make the width and heeight parameters optional : use engine.getRenderWidth(), engine.getRenderHeight() instead

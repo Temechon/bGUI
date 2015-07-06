@@ -26,3 +26,6 @@ Set all elements of this group as visible (or not)
 
 ###isVisible() → boolean
 Returns true if the group is visible, false otherwise. returns false if the group is empty
+
+###dispose() → void
+Delete the content of this group.
