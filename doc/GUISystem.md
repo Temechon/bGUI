@@ -51,6 +51,9 @@ Add a Babylon mesh to the GUI, and returns a new GUIObject. The given mesh layer
 Enable clic actions on all GUI objects. By default, actions are launched on the scene objects (and not on GUI). 
 With this method, BABYLON.Action will be fired on GUI objects and scene objects.
 
+###disableClick → void
+Disable click actions on all GUI objects. 
+
 ###getGroupByName(string) → [GUIGroup](http://doc.babylonjs.com/page.php?p=25104)
 Returns the GUIGroup corresponding to the given name, or null if nothing is found.
 

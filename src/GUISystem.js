@@ -146,20 +146,46 @@ var bGUI = bGUI || {};
      */
     GUISystem.prototype.enableClick = function() {
 
-      var eventPrefix = BABYLON.Tools.GetPointerPrefix();
-      var _this = this;
-      this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "down", function(evt) {
-        var predicate = function (mesh) {
-          return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+        var _this = this;
+        // On pick down
+        this._onPointerDown = function(evt) {
+            var predicate = function (mesh) {
+                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+            };
+            _this._scene._updatePointerPosition(evt);
+            var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
+            if (pickResult.hit) {
+                if (pickResult.pickedMesh.actionManager) {
+                    pickResult.pickedMesh.actionManager.processTrigger(BABYLON.ActionManager.OnPickTrigger, BABYLON.ActionEvent.CreateNew(pickResult.pickedMesh, evt));
+                }
+            }
         };
-        _this._scene._updatePointerPosition(evt);
-        var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
-        if (pickResult.hit) {
-          if (pickResult.pickedMesh.actionManager) {
-            pickResult.pickedMesh.actionManager.processTrigger(BABYLON.ActionManager.OnPickUpTrigger, BABYLON.ActionEvent.CreateNew(pickResult.pickedMesh, evt));
-          }
-        }
-      }, false);
+        // On pick up
+        this._onPointerUp = function(evt) {
+            var predicate = function (mesh) {
+                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+            };
+            _this._scene._updatePointerPosition(evt);
+            var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
+            if (pickResult.hit) {
+                if (pickResult.pickedMesh.actionManager) {
+                    pickResult.pickedMesh.actionManager.processTrigger(BABYLON.ActionManager.OnPickUpTrigger, BABYLON.ActionEvent.CreateNew(pickResult.pickedMesh, evt));
+                }
+            }
+        };
+
+        var eventPrefix = BABYLON.Tools.GetPointerPrefix();
+        this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "down", this._onPointerDown, false);
+        this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "up",this._onPointerUp, false);
+    };
+
+    /**
+     * Disable click events on GUI
+     */
+    GUISystem.prototype.disableClick = function() {
+        var eventPrefix = BABYLON.Tools.GetPointerPrefix();
+        this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "down", this._onPointerDown, false);
+        this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "up",this._onPointerUp, false);
     };
 
     GUISystem.LAYER_MASK = 8;
