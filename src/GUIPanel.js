@@ -25,6 +25,7 @@ var bGUI = bGUI || {};
         var mat                     = new BABYLON.StandardMaterial(name+"_material", guisystem.getScene());
         mat.emissiveColor           = BABYLON.Color3.White();
         mat.diffuseTexture          = texture;
+        mat.backFaceCulling         = false;
         this.mesh.material   = mat;
 
 

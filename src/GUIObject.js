@@ -94,5 +94,19 @@ var bGUI = bGUI || {};
     GUIObject.prototype.setVisible = function(bool) {
         this.mesh.isVisible = bool;
     };
+
+    /**
+     * Fire an flip animation along the given axis
+     * @param duration The duration of the flip (in milliseconds)
+     */
+    GUIObject.prototype.flip = function(duration) {
+        var end = this.mesh.rotation.y + Math.PI*2;
+        if (typeof duration === 'undefined') {
+            duration = 1000;
+        }
+        BABYLON.Animation.CreateAndStartAnimation(
+            "flip", this.mesh, "rotation.y", 30, 30*duration*0.001, this.mesh.rotation.y, end, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+        );
+    };
     bGUI.GUIObject = GUIObject;
 })();

@@ -1,12 +1,12 @@
 {
     "name": "bGUI",
-    "version": "1.2.1",
+    "version": "1.3.0",
     "dependencies": {
         "uglifyjs": "latest"
     },
     "scripts": {
-        "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.1.min.js",
-        "debug": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.2.1.js -b",
+        "build": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.3.0.min.js",
+        "debug": "uglifyjs src/GUISystem.js src/GUIObject.js src/GUIGroup.js src/GUIPanel.js src/GUIText.js -o dist/bGUI-1.3.0.js -b",
         "all" : "npm run debug && npm run build"
     }
 }
