@@ -96,7 +96,7 @@ var bGUI = bGUI || {};
     };
 
     /**
-     * Fire an flip animation along the given axis
+     * Fire an flip animation
      * @param duration The duration of the flip (in milliseconds)
      */
     GUIObject.prototype.flip = function(duration) {
@@ -106,6 +106,30 @@ var bGUI = bGUI || {};
         }
         BABYLON.Animation.CreateAndStartAnimation(
             "flip", this.mesh, "rotation.y", 30, 30*duration*0.001, this.mesh.rotation.y, end, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+        );
+    };
+    /**
+     * Fire an fade out animation
+     * @param duration The duration of the fade out (in milliseconds)
+     */
+    GUIObject.prototype.fadeout = function(duration) {
+        if (typeof duration === 'undefined') {
+            duration = 1000;
+        }
+        BABYLON.Animation.CreateAndStartAnimation(
+            "fadeout", this.mesh, "visibility", 30, 30*duration*0.001, 1, 0, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
+        );
+    };
+    /**
+     * Fire an fade in animation
+     * @param duration The duration of the fade in (in milliseconds)
+     */
+    GUIObject.prototype.fadein = function(duration) {
+        if (typeof duration === 'undefined') {
+            duration = 1000;
+        }
+        BABYLON.Animation.CreateAndStartAnimation(
+            "fadein", this.mesh, "visibility", 30, 30*duration*0.001, 0, 1, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
         );
     };
     bGUI.GUIObject = GUIObject;

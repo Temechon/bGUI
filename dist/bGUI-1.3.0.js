@@ -189,6 +189,18 @@ var bGUI = bGUI || {};
         }
         BABYLON.Animation.CreateAndStartAnimation("flip", this.mesh, "rotation.y", 30, 30 * duration * .001, this.mesh.rotation.y, end, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
     };
+    GUIObject.prototype.fadeout = function(duration) {
+        if (typeof duration === "undefined") {
+            duration = 1e3;
+        }
+        BABYLON.Animation.CreateAndStartAnimation("fadeout", this.mesh, "visibility", 30, 30 * duration * .001, 1, 0, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+    };
+    GUIObject.prototype.fadein = function(duration) {
+        if (typeof duration === "undefined") {
+            duration = 1e3;
+        }
+        BABYLON.Animation.CreateAndStartAnimation("fadein", this.mesh, "visibility", 30, 30 * duration * .001, 0, 1, BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT);
+    };
     bGUI.GUIObject = GUIObject;
 })();
 
@@ -235,6 +247,7 @@ var bGUI = bGUI || {};
         var mat = new BABYLON.StandardMaterial(name + "_material", guisystem.getScene());
         mat.emissiveColor = BABYLON.Color3.White();
         mat.diffuseTexture = texture;
+        mat.opacityTexture = texture;
         mat.backFaceCulling = false;
         this.mesh.material = mat;
         this.mesh.scaling = new BABYLON.Vector3((textSize.width - .1) / guisystem.zoom, (textSize.height - .1) / guisystem.zoom, 1);
