@@ -5,7 +5,6 @@ var bGUI = bGUI || {};
     var GUISystem = function(scene, guiWidth, guiHeight) {
         this._scene = scene;
         var mainCam = scene.activeCamera;
-        mainCam.layerMask -= bGUI.GUISystem.LAYER_MASK;
         if (this._scene.activeCameras.indexOf(mainCam) == -1) {
             this._scene.activeCameras.push(mainCam);
         }
@@ -58,7 +57,6 @@ var bGUI = bGUI || {};
         });
         this.groups = [];
         this._camera.dispose();
-        this.getScene().activeCamera.layerMask += bGUI.GUISystem.LAYER_MASK;
     };
     GUISystem.prototype.add = function(mesh) {
         var p = new bGUI.GUIObject(mesh, this);
@@ -125,7 +123,20 @@ var bGUI = bGUI || {};
         this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "down", this._onPointerDown, false);
         this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "up", this._onPointerUp, false);
     };
+    GUISystem.prototype.updateCamera = function(cam) {
+        var myCam = cam || this._scene.activeCamera;
+        myCam.layerMask = GUISystem.GAME_LAYER_MASK;
+        for (var m = 0; m < this._scene.meshes.length; m++) {
+            var mesh = this._scene.meshes[m];
+            if (!mesh.__gui) {
+                if (mesh.layerMask) {
+                    mesh.layerMask = GUISystem.GAME_LAYER_MASK;
+                }
+            }
+        }
+    };
     GUISystem.LAYER_MASK = 8;
+    GUISystem.GAME_LAYER_MASK = 1;
     bGUI.GUISystem = GUISystem;
 })();
 
@@ -134,6 +145,7 @@ var bGUI = bGUI || {};
 (function() {
     var GUIObject = function(mesh, guiSystem) {
         this.mesh = mesh;
+        this.mesh.__gui = true;
         this.guiSystem = guiSystem;
         this.onClick = null;
         this.mesh.actionManager = new BABYLON.ActionManager(mesh._scene);

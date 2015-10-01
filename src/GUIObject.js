@@ -10,6 +10,7 @@ var bGUI = bGUI || {};
      */
     var GUIObject = function(mesh, guiSystem) {
         this.mesh       = mesh;
+        this.mesh.__gui = true; // This mesh is a gui component
         this.guiSystem  = guiSystem;
         this.onClick    = null;
 

@@ -16,9 +16,6 @@ var bGUI = bGUI || {};
         // Push the activecamera in activeCameras
         var mainCam = scene.activeCamera;
 
-        // Remove the layer mask of the camera
-        mainCam.layerMask -= bGUI.GUISystem.LAYER_MASK;
-
         if (this._scene.activeCameras.indexOf(mainCam) == -1) {
             this._scene.activeCameras.push(mainCam);
         }
@@ -92,7 +89,6 @@ var bGUI = bGUI || {};
         this.groups = [];
         this._camera.dispose();
 
-        this.getScene().activeCamera.layerMask += bGUI.GUISystem.LAYER_MASK;
     };
     GUISystem.prototype.add = function(mesh) {
         var p = new bGUI.GUIObject(mesh, this);
@@ -142,7 +138,7 @@ var bGUI = bGUI || {};
     };
 
     /**
-     * Enable click actions on GUIObject
+     * Enable click actions on GUIObject.
      */
     GUISystem.prototype.enableClick = function() {
 
@@ -188,6 +184,28 @@ var bGUI = bGUI || {};
         this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "up",this._onPointerUp, false);
     };
 
+    /**
+     * Update the layer mask of all babylon meshes that are not GUI
+     * in order to make them invisible to the GUI camera.
+     * Updates the layer mask property of all meshes and of the given camerA.
+     */
+    GUISystem.prototype.updateCamera = function(cam) {
+        // Camera
+        var myCam = cam || this._scene.activeCamera;
+        myCam.layerMask = GUISystem.GAME_LAYER_MASK;
+
+        // Meshes
+        for (var m=0; m<this._scene.meshes.length; m++) {
+            var mesh = this._scene.meshes[m];
+            if (!mesh.__gui) { // Don't update layer mask on gui object
+                if (mesh.layerMask) {
+                    mesh.layerMask = GUISystem.GAME_LAYER_MASK;
+                }
+            }
+        }
+    };
+
     GUISystem.LAYER_MASK = 8;
+    GUISystem.GAME_LAYER_MASK = 1;
     bGUI.GUISystem = GUISystem;
 })();

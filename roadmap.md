@@ -3,7 +3,7 @@
 
 * Add special effects for GUI : check (kendo UI effects)[http://demos.telerik.com/kendo-ui/fx/flip]
 * Add an option to freeze matrix world of static GUI objects
-* Don't add the active camera in scene.activeCameras if already added.
+* ~~Don't add the active camera in scene.activeCameras if already added.~~
 * Enable animations for a GUIGroup
 * Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
 * Compute guiPosition when a relativePosition is set.

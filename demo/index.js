@@ -36,7 +36,6 @@ window.addEventListener("DOMContentLoaded", function() {
             /* GUI CREATION when all texture are loaded*/
             var gui = new bGUI.GUISystem(scene, engine.getRenderWidth(), engine.getRenderHeight());
             gui.enableClick();
-            scene.activeCamera.layerMask    = 1;
 
             // bGUI logo
             var logo = new bGUI.GUIPanel("bgui", assets["bgui"], null, gui);
@@ -82,6 +81,8 @@ window.addEventListener("DOMContentLoaded", function() {
                 animate(boy.mesh, 60);
             };
 
+            gui.updateCamera();
+
         }, 10);
         engine.runRenderLoop(function() {
             scene.render();
@@ -97,15 +98,10 @@ function init3d (scene, canvas) {
     var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 10, BABYLON.Vector3.Zero(), scene);
     var material = new BABYLON.StandardMaterial("kosh", scene);
     var sphere1 = BABYLON.Mesh.CreateSphere("Sphere1", 32, 3, scene);
-    sphere1.layerMask = 1;
     var sphere2 = BABYLON.Mesh.CreateSphere("Sphere2", 32, 3, scene);
-    sphere2.layerMask = 1;
     var sphere3 = BABYLON.Mesh.CreateSphere("Sphere3", 32, 3, scene);
-    sphere3.layerMask = 1;
     var sphere4 = BABYLON.Mesh.CreateSphere("Sphere4", 32, 3, scene);
-    sphere4.layerMask = 1;
     var sphere5 = BABYLON.Mesh.CreateSphere("Sphere5", 32, 3, scene);
-    sphere5.layerMask = 1;
     var light = new BABYLON.PointLight("Omni0", new BABYLON.Vector3(-17.6, 18.8, -49.9), scene);
 
     camera.setPosition(new BABYLON.Vector3(-15, 3, 0));
@@ -219,7 +215,6 @@ function init3d (scene, canvas) {
     skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
     skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
     skybox.material = skyboxMaterial;
-    skybox.layerMask = 1;
 
 }
 

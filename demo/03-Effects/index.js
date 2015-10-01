@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", function() {
     spinning.rotation.z += 0.02;
   });
   spinning.material = new BABYLON.StandardMaterial("box", scene);
-  spinning.layerMask = 1;
 
   spinning.actionManager = new BABYLON.ActionManager(scene);
   var updateMat = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickUpTrigger,
@@ -55,6 +54,7 @@ window.addEventListener("DOMContentLoaded", function() {
     };
 
   gui.enableClick();
+  gui.updateCamera();
 
   scene.onPointerDown = function(evt, pr) {
     if (pr.hit) {
