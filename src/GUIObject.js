@@ -12,7 +12,12 @@ var bGUI = bGUI || {};
         this.mesh       = mesh;
         this.mesh.__gui = true; // This mesh is a gui component
         this.guiSystem  = guiSystem;
+        // Action called on pick up
         this.onClick    = null;
+        // Action called when the mouse enter the image
+        this.onHoverOn    = null;
+        // Action called when the mouse leave the image
+        this.onHoverOut   = null;
 
         this.mesh.actionManager = new BABYLON.ActionManager(mesh._scene);
 
@@ -24,7 +29,26 @@ var bGUI = bGUI || {};
                 }
             }
         );
+        // Action on hover on
+        var updateOnHoverOn = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger,
+            function(e) {
+                if (_this.onHoverOn) {
+                    _this.onHoverOn(e);
+                }
+            }
+        );
+
+        // Action on hover out
+        var updateOnHoverOut = new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger,
+            function(e) {
+                if (_this.onHoverOut) {
+                    _this.onHoverOut(e);
+                }
+            }
+        );
         this.mesh.actionManager.registerAction(updateOnPointerUp);
+        this.mesh.actionManager.registerAction(updateOnHoverOn);
+        this.mesh.actionManager.registerAction(updateOnHoverOut);
 
         this.mesh.layerMask     = bGUI.GUISystem.LAYER_MASK;
 

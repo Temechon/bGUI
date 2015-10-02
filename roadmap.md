@@ -8,6 +8,7 @@
 * Create standard animations for panel (bounce, fadeOut, fadeIn, ...)
 * Compute guiPosition when a relativePosition is set.
 * Set name for guiPosition and guiposition
+* ~~Add on hover on and hover out of a gui object~~
 
 #Roadmap for v1.2
 ----------------------

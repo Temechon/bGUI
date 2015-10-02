@@ -80,6 +80,12 @@ window.addEventListener("DOMContentLoaded", function() {
             vault.onClick = function() {
                 animate(boy.mesh, 60);
             };
+            vault.onHoverOn = function() {
+                head.flip(250);
+            };
+            vault.onHoverOut = function() {
+                head.flip(500);
+            };
 
             gui.updateCamera();
 

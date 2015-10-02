@@ -46,6 +46,9 @@ var bGUI = bGUI || {};
 
         // True if the gui is visible, false otherwise
         this.visible        = true;
+
+        // Contains the gui object under the pointer
+        this._objectUnderPointer = null;
     };
 
     GUISystem.prototype.getScene = function() {
@@ -143,10 +146,43 @@ var bGUI = bGUI || {};
     GUISystem.prototype.enableClick = function() {
 
         var _this = this;
+
+        var handleOnOutMesh = function(obj) {
+            if (_this._objectUnderPointer === obj) {
+                return;
+            }
+            if (_this._objectUnderPointer && _this._objectUnderPointer.actionManager) {
+                _this._objectUnderPointer.actionManager.processTrigger(BABYLON.ActionManager.OnPointerOutTrigger, BABYLON.ActionEvent.CreateNew(_this._objectUnderPointer));
+            }
+            _this._objectUnderPointer = obj;
+            if (_this._objectUnderPointer && _this._objectUnderPointer.actionManager) {
+                _this._objectUnderPointer.actionManager.processTrigger(BABYLON.ActionManager.OnPointerOverTrigger, BABYLON.ActionEvent.CreateNew(_this._objectUnderPointer));
+            }
+        };
+
         // On pick down
+        this._onPointerMove = function(evt) {
+            var canvas = _this._scene.getEngine().getRenderingCanvas();
+            var predicate = function (mesh) {
+                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.__gui && mesh.actionManager && mesh.actionManager.hasPointerTriggers;
+            };
+            _this._scene._updatePointerPosition(evt);
+            var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
+            if (pickResult.hit) {
+                // Only on GUI element
+                handleOnOutMesh(pickResult.pickedMesh);
+                canvas.style.cursor = "pointer";
+            }
+            else {
+                handleOnOutMesh(null);
+                canvas.style.cursor = "";
+            }
+        };
+
+        // On pointer down
         this._onPointerDown = function(evt) {
             var predicate = function (mesh) {
-                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.__gui && mesh.actionManager && mesh.actionManager.hasPickTriggers;
             };
             _this._scene._updatePointerPosition(evt);
             var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
@@ -159,7 +195,7 @@ var bGUI = bGUI || {};
         // On pick up
         this._onPointerUp = function(evt) {
             var predicate = function (mesh) {
-                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.actionManager && mesh.actionManager.hasPickTriggers;
+                return mesh.isPickable && mesh.isVisible && mesh.isReady() && mesh.__gui && mesh.actionManager && mesh.actionManager.hasPickTriggers;
             };
             _this._scene._updatePointerPosition(evt);
             var pickResult = _this._scene.pick(_this._scene._pointerX, _this._scene._pointerY, predicate, false, _this.getCamera());
@@ -172,6 +208,7 @@ var bGUI = bGUI || {};
 
         var eventPrefix = BABYLON.Tools.GetPointerPrefix();
         this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "down", this._onPointerDown, false);
+        this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "move", this._onPointerMove, false);
         this._scene.getEngine().getRenderingCanvas().addEventListener(eventPrefix + "up",this._onPointerUp, false);
     };
 
