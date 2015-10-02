@@ -149,6 +149,7 @@ var bGUI = bGUI || {};
     };
     GUISystem.prototype.disableClick = function() {
         var eventPrefix = BABYLON.Tools.GetPointerPrefix();
+        this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "move", this._onPointerDown, false);
         this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "down", this._onPointerDown, false);
         this._scene.getEngine().getRenderingCanvas().removeEventListener(eventPrefix + "up", this._onPointerUp, false);
     };
