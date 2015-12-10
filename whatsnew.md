@@ -1,3 +1,9 @@
+#v1.3.1
+----------------------
+
+* A gui system can now be resized (guisystem.resize()).
+
+
 #v1.3
 ----------------------
 

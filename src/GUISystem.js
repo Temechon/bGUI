@@ -65,6 +65,15 @@ var bGUI = bGUI || {};
         this._camera.setTarget(BABYLON.Vector3.Zero());
         this._camera.layerMask  = bGUI.GUISystem.LAYER_MASK;
 
+        this.resize();
+
+        this._scene.activeCameras.push(this._camera);
+    };
+
+    /**
+     * Resize the camera parameters
+     */
+    GUISystem.prototype.resize = function() {
         var width   = this.dpr * this._scene.getEngine().getRenderingCanvas().width;
         var height  = this.dpr * this._scene.getEngine().getRenderingCanvas().height;
 
@@ -77,8 +86,6 @@ var bGUI = bGUI || {};
 
         this.guiWidth       = right;
         this.guiHeight      = top;
-
-        this._scene.activeCameras.push(this._camera);
     };
 
     GUISystem.prototype.dispose = function() {

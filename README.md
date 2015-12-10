@@ -73,4 +73,15 @@ Yes : [bGUI documentation on official babylon website](http://doc.babylonjs.com/
 # Copyright ?
 [WTFPL](http://www.wtfpl.net/about/)
 
+# Build from source
+
+Create the debug version of bgui
+```
+npm debug
+```
+Create the full minified version of bgui
+```
+npm build
+```
+
 

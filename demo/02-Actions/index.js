@@ -26,7 +26,13 @@ window.addEventListener("DOMContentLoaded", function() {
   spinning.actionManager.registerAction(updateMat);
 
   var gui = new bGUI.GUISystem(scene);
-  var text = new bGUI.GUIText("helpText", 512, 128, {font:"40px Open Sans", textAlign:"center", text:"bGUI is awesome !", color:"#FF530D"}, gui);
+
+    window.addEventListener("resize", function() {
+        engine.resize();
+        gui.resize();
+    });
+
+    var text = new bGUI.GUIText("helpText", 512, 128, {font:"40px Open Sans", textAlign:"center", text:"bGUI is awesome !", color:"#FF530D"}, gui);
   text.relativePosition(new BABYLON.Vector3(0.5, 0.75, 0));
   text.onClick = function() {
     spinning.material.diffuseColor = BABYLON.Color3.Blue();
