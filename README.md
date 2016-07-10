@@ -1,3 +1,5 @@
+# bGUI is now obsolete due to the implementation of [Canvas2D](http://doc.babylonjs.com/overviews/Canvas2D_Home) in Babylon.js 2.4. This library is then no longer maintenaned and/or developped.
+
 # ![](https://raw.githubusercontent.com/Temechon/bGUI/master/logo_sd.png) v1.2
 
 **A Babylon.js extension to create a GUI**
